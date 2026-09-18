@@ -1,5 +1,5 @@
 import React from "react";
-import { Sparkles, Shield, Heart, ExternalLink } from "lucide-react";
+import { Sparkles, Shield, Heart, ExternalLink, Download } from "lucide-react";
 import { NavTab } from "./Navbar";
 
 interface FooterProps {
@@ -58,6 +58,17 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab, onOpenLegal }) => {
                   <span>Admin Portal</span>
                   <Shield className="w-3 h-3 text-purple-500" />
                 </button>
+              </li>
+              <li>
+                <a
+                  href="./jobpilotai-dist.zip"
+                  download="jobpilotai-dist.zip"
+                  className="hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors flex items-center gap-1.5 font-semibold text-indigo-600 dark:text-indigo-400"
+                  title="Download complete static dist ZIP for GitHub Pages"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download Dist ZIP</span>
+                </a>
               </li>
             </ul>
           </div>

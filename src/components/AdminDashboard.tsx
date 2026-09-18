@@ -13,7 +13,8 @@ import {
   Building2, 
   X,
   Activity,
-  Cpu
+  Cpu,
+  Download
 } from "lucide-react";
 import { Job, UserProfile, JobCategory, WorkplaceType, JobType, ExperienceLevel } from "../types";
 import { useToast } from "./Toast";
@@ -116,13 +117,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </h1>
         </div>
 
-        <button
-          onClick={() => setIsAddJobOpen(true)}
-          className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md transition-all flex items-center gap-2 self-start sm:self-auto"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Post New Job Requisition</span>
-        </button>
+        <div className="flex items-center gap-2.5 flex-wrap self-start sm:self-auto">
+          <a
+            href="./jobpilotai-dist.zip"
+            download="jobpilotai-dist.zip"
+            className="px-4 py-2 rounded-xl border border-indigo-200 dark:border-indigo-800/80 bg-indigo-50/80 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold transition-all flex items-center gap-2 shadow-xs"
+            title="Download full static site ZIP file ready for GitHub Pages"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download GitHub Pages ZIP</span>
+          </a>
+
+          <button
+            onClick={() => setIsAddJobOpen(true)}
+            className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md transition-all flex items-center gap-2"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Post New Job Requisition</span>
+          </button>
+        </div>
       </div>
 
       {/* TOP STATS */}

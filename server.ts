@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
 
@@ -34,6 +35,25 @@ function getAIClient(): GoogleGenAI | null {
 app.get("/api/health", (_req, res) => {
   const hasKey = Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== "MY_GEMINI_API_KEY");
   res.json({ status: "ok", aiConfigured: hasKey });
+});
+
+// Download Dist ZIP endpoint
+app.get(["/download-dist-zip", "/api/download-dist-zip", "/jobpilotai-dist.zip"], (_req, res) => {
+  const candidates = [
+    path.join(process.cwd(), "public", "jobpilotai-dist.zip"),
+    path.join(process.cwd(), "dist", "jobpilotai-dist.zip"),
+    path.join(process.cwd(), "jobpilotai-dist.zip"),
+  ];
+
+  for (const zipPath of candidates) {
+    if (fs.existsSync(zipPath)) {
+      res.setHeader("Content-Type", "application/zip");
+      res.setHeader("Content-Disposition", 'attachment; filename="jobpilotai-dist.zip"');
+      return res.sendFile(zipPath);
+    }
+  }
+
+  return res.status(404).send("ZIP file not found. Please run the build script first.");
 });
 
 // AI CV Analysis Endpoint
