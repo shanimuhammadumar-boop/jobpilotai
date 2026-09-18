@@ -2,5 +2,7 @@
   "name": "JobPilot AI",
   "description": "Your AI-powered career co-pilot helping job seekers find jobs, analyze CVs, match roles, generate cover letters, and prepare for interviews.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
